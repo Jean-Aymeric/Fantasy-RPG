@@ -22,8 +22,12 @@ public class Main {
         System.out.println("Attaque distance : " + personnage.getAttaqueDistance());
 
         ArrayList<ICompetence> competences = new ArrayList<> ();
-        competences.add (new Competence ("Protéger un allié", "Guerrier", 1, "Voie du bouclier"));
-        competences.add (new Competence ("Vivacité", "Guerrier", 1, "Voie du combat"));
+        competences.add (CompetenceGuerrier.G11);
+        competences.add (CompetenceGuerrier.G21);
         personnage.levelUp (competences);
+
+        for (ICompetence c :personnage.getCompetences ()) {
+            System.out.println(c.getVoie () + " : " + c.getNom () + " (" + c.getNiveau () + ")");
+        }
     }
 }
