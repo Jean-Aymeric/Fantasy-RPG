@@ -1,4 +1,4 @@
 package com.jadrpg.profil;
 
-public abstract class Profil implements IProfil {
+public class Profil implements IProfil {
 }

@@ -1,12 +1,12 @@
 package com.jadrpg.caracteristique;
 
-public class Caracteristique {
+public class Modificateur {
     private int value;
     private String name;
 
-    public Caracteristique(String name) {
-        setValue((int) (Math.random()*6 + 1) + (int) (Math.random()*6 + 1) + (int) (Math.random()*6 + 1));
+    public Modificateur(String name, int value) {
         setName(name);
+        setValue(value);
     }
 
     public int getValue() {
@@ -24,4 +24,5 @@ public class Caracteristique {
     private void setName(String name) {
         this.name = name;
     }
+
 }
