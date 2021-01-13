@@ -23,6 +23,7 @@ public class Personnage {
         getCaracteristiques().add(new Caracteristique("Intelligence"));
         getCaracteristiques().add(new Caracteristique("Sagesse"));
         getCaracteristiques().add(new Caracteristique("Charisme"));
+        getCaracteristiques().add(new Caracteristique("Agilité"));
         this.pv = 0;
     }
 
@@ -41,7 +42,7 @@ public class Personnage {
     public int getCaracteristique(String name) {
         for (Caracteristique caracteristique: this.getCaracteristiques()) {
             if (caracteristique.getName() == name) {
-                return caracteristique.getValue() + this.getRace().getModificateur(name);
+                return caracteristique.getValue() + this.getRace().getModificateur(name) + this.getProfil().getModificateur(name);
             }
         }
         return 0;
@@ -64,12 +65,12 @@ public class Personnage {
     }
 
     public int getDefense() {
-        return 10 + this.getRace().getModificateur("Dextérité");
+        return 10 + this.getRace().getModificateur("Dextérité") + this.getProfil().getModificateur("Dextérité");
     }
     public int getAttaqueMelee() {
-        return 1 + this.getRace().getModificateur("Force");
+        return 1 + this.getRace().getModificateur("Force") + this.getProfil().getModificateur("Force");
     }
     public int getAttaqueDistance() {
-        return 1 + this.getRace().getModificateur("Dextérité");
+        return 1 + this.getRace().getModificateur("Dextérité") + this.getProfil().getModificateur("Dextérité");
     }
 }
