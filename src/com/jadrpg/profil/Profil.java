@@ -1,4 +1,9 @@
 package com.jadrpg.profil;
 
-public class Profil implements IProfil {
+import com.jadrpg.AddOn;
+
+public abstract class Profil extends AddOn implements IProfil {
+    public Profil(String name) {
+        super(name);
+    }
 }

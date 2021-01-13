@@ -9,6 +9,8 @@ public class Personnage {
     private IRace race;
     private IProfil profil;
 
+   private int pv;
+
     private ArrayList<Caracteristique> caracteristiques;
 
     public Personnage(IRace race, IProfil profil) {
@@ -21,6 +23,7 @@ public class Personnage {
         getCaracteristiques().add(new Caracteristique("Intelligence"));
         getCaracteristiques().add(new Caracteristique("Sagesse"));
         getCaracteristiques().add(new Caracteristique("Charisme"));
+        this.pv = 0;
     }
 
     private void setRace(IRace race) {
@@ -31,7 +34,7 @@ public class Personnage {
         this.profil = profil;
     }
 
-    private ArrayList<Caracteristique> getCaracteristiques() {
+    public ArrayList<Caracteristique> getCaracteristiques() {
         return caracteristiques;
     }
 
@@ -50,5 +53,23 @@ public class Personnage {
 
     public IProfil getProfil() {
         return profil;
+    }
+
+    public int getPv() {
+        return pv + this.getProfil().getModificateur("PV");
+    }
+
+    public int getModificateurCaracteristique(String name) {
+        return (int) (this.getCaracteristique(name) / 2) - 5;
+    }
+
+    public int getDefense() {
+        return 10 + this.getRace().getModificateur("Dextérité");
+    }
+    public int getAttaqueMelee() {
+        return 1 + this.getRace().getModificateur("Force");
+    }
+    public int getAttaqueDistance() {
+        return 1 + this.getRace().getModificateur("Dextérité");
     }
 }
