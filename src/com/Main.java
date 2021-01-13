@@ -26,6 +26,15 @@ public class Main {
         competences.add (CompetenceGuerrier.G21);
         personnage.levelUp (competences);
 
+        competences.clear ();
+        competences.add (CompetenceGuerrier.G12);
+        competences.add (CompetenceGuerrier.G31);
+        personnage.levelUp (competences);
+
+        competences.clear ();
+        competences.add (CompetenceGuerrier.G13);
+        personnage.levelUp (competences);
+
         for (ICompetence c :personnage.getCompetences ()) {
             System.out.println(c.getVoie () + " : " + c.getNom () + " (" + c.getNiveau () + ")");
         }

@@ -96,29 +96,37 @@ public class Personnage {
     }
 
     public boolean levelUp(ArrayList<ICompetence> competences) {
+        int cost = 0;
         for (ICompetence competence:competences) {
+            cost += competence.getNiveau () <= 2 ? 1:2;
             if (! competence.getNomProfil ().equals (this.getProfil ().getName ())) {
                 return false;
             }
             if (competence.getNiveau () > this.getLevel ()+1) {
                 return false;
             }
-            if (competence.getNiveau () > 1) {
-                boolean okVoie = false;
+            if (this.getLevel () >= 1 && competence.getNiveau () > 1) {
+                boolean check = false;
                 for (ICompetence c : this.getCompetences ()) {
-                    if ( (! c.getVoie ().equals (competence.getVoie ())) && c.getNiveau () == competence.getNiveau ()-1) {
-                        okVoie = true;
+                    if ( (c.getVoie ().equals (competence.getVoie ())) && c.getNiveau () == competence.getNiveau ()-1) {
+                        check = true;
+                    }
+                    if (competence.equals (c)) {
+                        return false;
                     }
                 }
-                if (! okVoie) {
+                if (! check) {
                     return false;
                 }
             }
         }
-        this.increasePv ();
+        if (cost > 2) {
+            return false;
+        }
         for (ICompetence competence:competences) {
             this.getCompetences ().add (competence);
         }
+        this.increasePv ();
         this.setLevel (this.getLevel ()+1);
         return true;
     }
