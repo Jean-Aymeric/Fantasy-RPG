@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public abstract class AddOn {
     private String name;
-    private ArrayList<Modificateur> modificateurs;
+    private final ArrayList<Modificateur> modificateurs;
 
     public AddOn(String name) {
         this.setName(name);

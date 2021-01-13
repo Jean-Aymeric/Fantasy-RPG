@@ -1,6 +1,6 @@
 package com.jadrpg.caracteristique;
 
-public class Caracteristique {
+public class Caracteristique implements ICaracteristique {
     private int value;
     private String name;
 
@@ -9,7 +9,8 @@ public class Caracteristique {
         setName(name);
     }
 
-    public int getValue() {
+    @Override
+    public int getValue () {
         return value;
     }
 
@@ -17,7 +18,8 @@ public class Caracteristique {
         this.value = value;
     }
 
-    public String getName() {
+    @Override
+    public String getName () {
         return name;
     }
 
